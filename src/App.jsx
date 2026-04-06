@@ -91,7 +91,7 @@ export default function KimiaConsultant() {
       });
       const data = await response.json();
       console.log("API response:", data);
-      const reply = data.content?.map(b => b.text || "").join("\n") || "No response received";
+      const reply = JSON.stringify(data);
       setMessages([{ role: "assistant", content: reply }]);
     } catch (error) {
       console.log("Error:", error);
