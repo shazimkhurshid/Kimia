@@ -90,10 +90,12 @@ export default function KimiaConsultant() {
         }),
       });
       const data = await response.json();
-      const reply = data.content?.map(b => b.text || "").join("\n") || "";
+      console.log("API response:", data);
+      const reply = data.content?.map(b => b.text || "").join("\n") || "No response received";
       setMessages([{ role: "assistant", content: reply }]);
-    } catch {
-      setMessages([{ role: "assistant", content: "Something went wrong. Please check your API key in Vercel environment variables." }]);
+    } catch (error) {
+      console.log("Error:", error);
+      setMessages([{ role: "assistant", content: "Error: " + error.message }]);
     } finally {
       setLoading(false);
     }
