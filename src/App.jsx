@@ -74,8 +74,8 @@ export default function KimiaConsultant() {
   }, [messages, loading]);
 
   const startSession = async () => {
-    setStarted(true);
     setLoading(true);
+    setStarted(true);
     try {
       const response = await fetch("/api/chat", {
         method: "POST",
